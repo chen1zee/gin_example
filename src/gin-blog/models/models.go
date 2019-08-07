@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin_example/src/gin-blog/pkg/setting"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mssql"
 	"log"
 )
 
@@ -30,7 +31,6 @@ func init() {
 	password = sec.Key("PASSWORD").String()
 	host = sec.Key("HOST").String()
 	tablePrefix = sec.Key("TABLE_PREFIX").String()
-
 	db, err := gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		user,
 		password,
@@ -43,4 +43,9 @@ func init() {
 		return tablePrefix + defaultTableName
 	}
 	db.SingularTable(true)
+	db.DB().SetMaxIdleConns(10)
+	db.DB().SetMaxOpenConns(100)
+}
+func CloseDB() {
+	defer db.Close()
 }
