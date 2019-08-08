@@ -5,7 +5,6 @@ import (
 	"gin_example/src/gin-blog/pkg/setting"
 	"gin_example/src/gin-blog/routers"
 	"net/http"
-	"time"
 )
 
 func main() {
@@ -19,7 +18,4 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 	_ = s.ListenAndServe()
-	for {
-		time.Sleep(time.Second * 10)
-	}
 }
