@@ -42,10 +42,12 @@ func init() {
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return tablePrefix + defaultTableName
 	}
+	db.LogMode(true)
 	db.SingularTable(true)
 	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
 }
-func CloseDB() {
-	defer db.Close()
-}
+
+//func CloseDB() {
+//	defer db.Close()
+//}

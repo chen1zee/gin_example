@@ -3,7 +3,7 @@ module gin_example
 go 1.12
 
 require (
-	github.com/astaxie/beego v1.12.0 // indirect
+	github.com/astaxie/beego v1.12.0
 	github.com/bradfitz/gomemcache v0.0.0-20190329173943-551aad21a668 // indirect
 	github.com/casbin/casbin v1.9.1 // indirect
 	github.com/couchbase/go-couchbase v0.0.0-20190708161019-23e7ca2ce2b7 // indirect

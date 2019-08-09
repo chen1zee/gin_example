@@ -33,8 +33,8 @@ func LoadApp() {
 	if err != nil {
 		log.Fatalf("fail to get section 'app': %v", err)
 	}
-	sec.Key("JWT_SECRET").MustString("!@)*#)!@U#@*!@!)")
-	sec.Key("PAGE_SIZE").MustInt(10)
+	JwtSecret = sec.Key("JWT_SECRET").MustString("!@)*#)!@U#@*!@!)")
+	PageSize = sec.Key("PAGE_SIZE").MustInt(10)
 }
 
 func LoadServer() {
