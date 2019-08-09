@@ -9,6 +9,7 @@ require (
 	github.com/couchbase/go-couchbase v0.0.0-20190708161019-23e7ca2ce2b7 // indirect
 	github.com/couchbase/gomemcached v0.0.0-20190515232915-c4b4ca0eb21d // indirect
 	github.com/couchbase/goutils v0.0.0-20190315194238-f9d42b11473b // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/edsrzf/mmap-go v1.0.0 // indirect
 	github.com/gin-gonic/gin v1.4.0
 	github.com/go-ini/ini v1.46.0
