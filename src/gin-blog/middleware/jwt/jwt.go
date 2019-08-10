@@ -35,7 +35,5 @@ func JWT() gin.HandlerFunc {
 			return
 		}
 		c.Next()
-		// TODO https://book.eddycjy.com/golang/gin/jwt.html
-		// c.JSON(http.StatusUnauthorized, gin.H{
 	}
 }

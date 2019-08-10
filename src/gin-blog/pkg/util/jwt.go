@@ -3,24 +3,25 @@ package util
 import (
 	"gin_example/src/gin-blog/pkg/setting"
 	"github.com/dgrijalva/jwt-go"
+	"strconv"
 	"time"
 )
 
-var jwtSecret = []byte(setting.JwtSecret)
+var jwtSecret = []byte(setting.JwtSecret + strconv.Itoa(GenRand())[1:6])
 
 type Claims struct {
+	PubDesc  int    `json:"pub_desc"`
 	Username string `json:"username"`
-	Password string `json:"password"`
 	jwt.StandardClaims
 }
 
-func GenerateToken(username, password string) (string, error) {
+func GenerateToken(username string, pubDesc int) (string, error) {
 	nowTime := time.Now()
 	expireTime := nowTime.Add(3 * time.Hour)
 
 	claims := Claims{
+		PubDesc:  pubDesc,
 		Username: username,
-		Password: password,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    "gin-blog",
