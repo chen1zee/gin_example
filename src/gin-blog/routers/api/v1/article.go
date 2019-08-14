@@ -114,7 +114,6 @@ func AddArticle(c *gin.Context) {
 	})
 }
 
-// TODO
 // 修改文章
 func EditArticle(c *gin.Context) {
 	valid := validation.Validation{}
