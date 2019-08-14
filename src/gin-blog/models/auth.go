@@ -7,8 +7,8 @@ type Auth struct {
 	Password string `json:"password"`
 }
 
-func CheckAuth(username string, pubDesc int) bool {
+func CheckAuth(username string, password string) (authResult *Auth, ok bool) {
 	var auth Auth
-	db.Select("id").Where(Auth{Username: username, PubDesc: pubDesc}).First(&auth)
-	return auth.ID > 0
+	db.Select("id, pub_desc").Where(Auth{Username: username, Password: password}).First(&auth)
+	return &auth, auth.ID > 0
 }

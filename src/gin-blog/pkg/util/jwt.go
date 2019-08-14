@@ -10,8 +10,8 @@ import (
 var jwtSecret = []byte(setting.JwtSecret + strconv.Itoa(GenRand())[1:6])
 
 type Claims struct {
-	PubDesc  int    `json:"pub_desc"`
 	Username string `json:"username"`
+	PubDesc  int    `json:"pub_desc"`
 	jwt.StandardClaims
 }
 
@@ -20,8 +20,8 @@ func GenerateToken(username string, pubDesc int) (string, error) {
 	expireTime := nowTime.Add(3 * time.Hour)
 
 	claims := Claims{
-		PubDesc:  pubDesc,
 		Username: username,
+		PubDesc:  pubDesc,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    "gin-blog",
