@@ -7,6 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 **/*.log
 /output.js
+src/gin-blog/docs/
 
 # gulp 生成的 模板文件
 dist_list/

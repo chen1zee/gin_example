@@ -167,3 +167,7 @@ func DeleteTag(c *gin.Context) {
 		"data": make(map[string]string),
 	})
 }
+
+// TODO 3.9 暂时跳过
+// TODO https://book.eddycjy.com/golang/gin/gorm-callback.html
+// TODO 3.10
