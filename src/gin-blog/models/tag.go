@@ -7,10 +7,10 @@ import (
 
 type Tag struct {
 	Model
-	Name       string `json:"name"`
+	Name       string `json:"name" example:"asd"`
 	CreatedBy  string `json:"created_by"`
 	ModifiedBy string `json:"modified_by"`
-	State      int    `json:"state"`
+	State      int    `json:"state" example:"0"`
 }
 
 func (tag *Tag) BeforeCreate(scope *gorm.Scope) error {

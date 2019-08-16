@@ -42,13 +42,16 @@ func GetTags(c *gin.Context) {
 	})
 }
 
+// // @Success 200 {object} models.Tag
+
 // @Summary 新增文章标签
 // @Produce  json
 // @Param name query string true "Name"
 // @Param state query int false "State"
 // @Param created_by query int false "CreatedBy"
-// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
 // @Router /api/v1/tags [post]
+// @Success 200 {string} json "{"code":200,"data":model.Tag,"msg":"ok"}"
+// @success 20001 {object} models.Tag
 func AddTag(c *gin.Context) {
 	var (
 		err       error
@@ -164,6 +167,3 @@ func DeleteTag(c *gin.Context) {
 		"data": make(map[string]string),
 	})
 }
-
-// TODO https://book.eddycjy.com/golang/gin/swagger.html
-// TODO
