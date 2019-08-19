@@ -9,6 +9,9 @@ yarn-error.log*
 /output.js
 src/gin-blog/docs/
 
+# 图片服务器 图片资源存放
+src/gin-blog/runtime/upload/images/
+
 # gulp 生成的 模板文件
 dist_list/
 dist_form/

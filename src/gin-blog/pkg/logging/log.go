@@ -2,6 +2,7 @@ package logging
 
 import (
 	"fmt"
+	"gin_example/src/gin-blog/pkg/file"
 	"log"
 	"os"
 	"path/filepath"
@@ -16,9 +17,8 @@ var (
 	DefaultPrefix      = ""
 	DefaultCallerDepth = 2
 
-	logger    *log.Logger
-	logPrefix = ""
-
+	logger     *log.Logger
+	logPrefix  = ""
 	levelFlags = []string{"DEBUG", "INFO", "WARN", "ERROR", "FATAL"}
 )
 
@@ -30,9 +30,16 @@ const (
 	FATAL
 )
 
-func init() {
-	filePath := getLogFileFullPath()
-	F = openLogFile(filePath)
+func Setup() {
+	var err error
+	filePath := getLogFilePath()
+	fileName := getLogFileName()
+
+	F, err = file.MustOpen(fileName, filePath)
+	if err != nil {
+		log.Fatalf("logging.Setup err: %v", err)
+	}
+
 	logger = log.New(F, DefaultPrefix, log.LstdFlags)
 }
 
@@ -62,9 +69,9 @@ func Fatal(v ...interface{}) {
 }
 
 func setPrefix(level Level) {
-	_, file, line, ok := runtime.Caller(DefaultCallerDepth)
+	_, file1, line, ok := runtime.Caller(DefaultCallerDepth)
 	if ok {
-		logPrefix = fmt.Sprintf("[%s][%s:%d]", levelFlags[level], filepath.Base(file), line)
+		logPrefix = fmt.Sprintf("[%s][%s:%d]", levelFlags[level], filepath.Base(file1), line)
 	} else {
 		logPrefix = fmt.Sprintf("[%s]", levelFlags[level])
 	}

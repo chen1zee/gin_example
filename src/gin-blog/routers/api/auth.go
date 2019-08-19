@@ -10,7 +10,6 @@ import (
 )
 
 type auth struct {
-	//PubDesc  int    `valid:"Range(1,254)"`
 	Username string `valid:"Required; MaxSize(50)"`
 	Password string `valid:"Required"`
 }
@@ -53,6 +52,3 @@ func GetAuth(c *gin.Context) {
 		"data": data,
 	})
 }
-
-// TODO https://book.eddycjy.com/golang/gin/swagger.html
-// TODO 看至 3.8 为它加上Swagger

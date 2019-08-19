@@ -32,7 +32,7 @@ func GetTags(c *gin.Context) {
 
 	fmt.Println(maps)
 
-	data["lists"] = models.GetTags(util.GetPage(c), setting.PageSize, maps)
+	data["lists"] = models.GetTags(util.GetPage(c), setting.AppSetting.PageSize, maps)
 	data["total"] = models.GetTagTotal(maps)
 
 	c.JSON(http.StatusOK, gin.H{
@@ -169,5 +169,3 @@ func DeleteTag(c *gin.Context) {
 }
 
 // TODO 3.9 暂时跳过
-// TODO https://book.eddycjy.com/golang/gin/gorm-callback.html
-// TODO 3.10
